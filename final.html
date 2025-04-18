@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Recommendations</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Final Recommendations</h1>
+            <div class="progress-bar">
+                <div class="step completed">1. Input</div>
+                <div class="step completed">2. Risk Analysis</div>
+                <div class="step completed">3. Imaging</div>
+                <div class="step active">4. Results</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="summary-section">
+                <h2>Assessment Summary</h2>
+                <div id="personalInfo" class="info-card"></div>
+                <div id="riskSummary" class="info-card"></div>
+                <div id="imagingResults" class="info-card"></div>
+            </section>
+
+            <section class="recommendation-section">
+                <h2>AI Recommendations</h2>
+                <div id="mainRecommendation" class="alert"></div>
+                <div id="lifestyleTips" class="tips-container"></div>
+            </section>
+
+            <section class="action-section">
+                <button id="downloadPDF" class="primary-btn">Download Report</button>
+                <button id="startOver" class="secondary-btn">Start New Assessment</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/final.js"></script>
+</body>
+</html>
