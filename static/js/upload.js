@@ -58,11 +58,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const file = fileInput.files[0];
         if (!file) return;
 
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Analyzing...';
+
         try {
             const formData = new FormData();
-            formData.append('image', file);
+            formData.append('file', file);
+            
+            // Get patient info from localStorage
+            const healthData = JSON.parse(localStorage.getItem('healthData')) || {};
+            const personalInfo = healthData.personalInfo || {};
+            
+            // Add to form data
+            if (personalInfo.name) formData.append('name', personalInfo.name);
+            if (personalInfo.age) formData.append('age', personalInfo.age);
+            if (personalInfo.gender) formData.append('gender', personalInfo.gender);
 
-            const response = await fetch('/analyze_image', {
+            const response = await fetch('/predict_xray', {
                 method: 'POST',
                 body: formData
             });
@@ -70,11 +83,28 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!response.ok) throw new Error('Upload failed');
 
             const result = await response.json();
-            localStorage.setItem('imageAnalysis', JSON.stringify(result));
+            
+            // Format the data to match the expected format in final.js
+            const imageAnalysis = {
+                conclusion: result.prediction,
+                urgency: result.confidence > 70 ? 'high' : 'moderate',
+                findings: [
+                    result.description,
+                    ...result.precautions
+                ].filter(item => item && item.trim() !== '')
+            };
+            
+            // Store in localStorage for final.js to use
+            localStorage.setItem('imageAnalysis', JSON.stringify(imageAnalysis));
+            
+            // Navigate to the final results page
             window.location.href = 'final.html';
         } catch (error) {
             console.error('Error:', error);
             alert('Upload failed. Please try again.');
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Analyze Image';
         }
     });
 });

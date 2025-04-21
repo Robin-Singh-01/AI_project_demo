@@ -1,49 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Upload Medical Scans</title>
-    <link rel="stylesheet" href="style/css/style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>Upload Medical Scans</h1>
-        <div class="progress-bar">
-          <div class="step completed">1. Input</div>
-          <div class="step completed">2. Risk Analysis</div>
-          <div class="step active">3. Imaging</div>
-          <div class="step">4. Results</div>
-        </div>
-      </header>
+    <link rel="stylesheet" href="static/css/style.css" />
+</head>
 
-      <main>
-        <section class="upload-section">
-          <h2>Upload Medical Images</h2>
-          <div class="upload-container">
-            <input
-              type="file"
-              id="imageUpload"
-              accept="image/*"
-              class="file-input"
-            />
-            <div id="dropZone" class="drop-zone">
-              <p>Drag and drop your medical scan here or click to browse</p>
+<body>
+    <div class="container">
+        <header>
+            <h1>Upload Medical Scans</h1>
+            <div class="progress-bar">
+                <div class="step completed">1. Input</div>
+                <div class="step completed">2. Risk Analysis</div>
+                <div class="step active">3. Imaging</div>
+                <div class="step">4. Results</div>
             </div>
-            <div id="preview" class="image-preview"></div>
-          </div>
-          <div class="upload-info">
-            <p>Accepted formats: JPEG, PNG</p>
-            <p>Maximum file size: 10MB</p>
-          </div>
-          <button id="submitUpload" class="submit-btn" disabled>
-            Analyze Image
-          </button>
-        </section>
-      </main>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <h2>Upload Medical Images</h2>
+                <div class="upload-container">
+                    <input type="file" id="imageUpload" accept="image/*" class="file-input" />
+                    <div id="dropZone" class="drop-zone">
+                        <p>Drag and drop your medical scan here or click to browse</p>
+                    </div>
+                    <div id="preview" class="image-preview"></div>
+                </div>
+                <div class="upload-info">
+                    <p>Accepted formats: JPEG, PNG</p>
+                    <p>Maximum file size: 10MB</p>
+                </div>
+                <button id="submitUpload" class="submit-btn" disabled>
+                    Analyze Image
+                </button>
+            </section>
+        </main>
     </div>
 
-    <script src="js/upload.js"></script>
-  </body>
+    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+</body>
+
 </html>

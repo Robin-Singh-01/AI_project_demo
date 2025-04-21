@@ -34,14 +34,14 @@
                     <div class="feature-icon">🏥</div>
                     <h3>Medical Records</h3>
                     <p>Upload your existing medical records for enhanced analysis</p>
-                    <a href="upload.html" class="btn secondary-btn">Upload Records</a>
+                    <a href="{{ url_for('upload') }}" class="btn secondary-btn">Upload Records</a>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>Quick Analysis</h3>
                     <p>Get instant health insights based on your medical scans</p>
-                    <a href="upload.html?type=scan" class="btn secondary-btn">Upload Scans</a>
+                    <a href="{{ url_for('upload') }}?type=scan" class="btn secondary-btn">Upload Scans</a>
                 </div>
             </div>
 
