@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disease Prediction Results</title>
+    <link rel="stylesheet" href="static/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Disease Prediction Results</h1>
+            <div class="progress-bar">
+                <div class="step completed">1. Input</div>
+                <div class="step active">2. Risk Analysis</div>
+                <div class="step">3. Imaging</div>
+                <div class="step">4. Results</div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Patient information will be inserted here dynamically -->
+            <div id="patientInfo" class="patient-info-section"></div>
+
+            <section class="risk-summary">
+                <h2>Disease Prediction Summary</h2>
+                <div class="risk-scores">
+                    <div id="riskTable"></div>
+                </div>
+            </section>
+
+            <!-- Disease details will be inserted here dynamically -->
+            <div id="diseaseDetails" class="disease-details-section"></div>
+
+            <section class="risk-visualization">
+                <h2>Confidence Visualization</h2>
+                <div class="charts">
+                    <canvas id="riskChart"></canvas>
+                </div>
+            </section>
+
+            <div id="actionButtons" class="action-buttons">
+                <button id="uploadButton" class="primary-btn" style="display: none">
+                    Proceed to Image Upload
+                </button>
+                <button id="finalButton" class="secondary-btn" style="display: none">
+                    View Final Results
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/resultcharts.js') }}"></script>
+
+</body>
+
+</html>

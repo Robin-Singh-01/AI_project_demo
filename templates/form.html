@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Assessment Form</title>
+    <link rel="stylesheet" href="static/css/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Health Risk Assessment</h1>
+            <div class="progress-bar">
+                <div class="step active">1. Input</div>
+                <div class="step">2. Risk Analysis</div>
+                <div class="step">3. Imaging</div>
+                <div class="step">4. Results</div>
+            </div>
+        </header>
+
+        <main>
+            <form id="healthForm">
+                <section class="personal-info">
+                    <h2>Personal Information</h2>
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" required min="0" max="120" />
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="symptoms">
+                    <h2>Symptoms</h2>
+                    <div class="form-group">
+                        <label for="symptoms">Describe your symptoms:</label>
+                        <textarea id="symptoms" name="symptoms" rows="4" required></textarea>
+                    </div>
+                </section>
+
+                <section class="lifestyle">
+                    <h2>Lifestyle Information</h2>
+                    <div class="form-group">
+                        <label for="smoking">Do you smoke?</label>
+                        <select id="smoking" name="smoking" required>
+                            <option value="never">Never</option>
+                            <option value="former">Former smoker</option>
+                            <option value="current">Current smoker</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exercise">Weekly exercise (hours):</label>
+                        <input type="number" id="exercise" name="exercise" min="0" max="168" required />
+                    </div>
+                    <div class="checkbox-group">
+                        <label>Medical conditions:</label>
+                        <div>
+                            <input type="checkbox" id="diabetes" name="conditions" value="diabetes" />
+                            <label for="diabetes">Diabetes</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="hypertension" name="conditions" value="hypertension" />
+                            <label for="hypertension">Hypertension</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="heart" name="conditions" value="heart" />
+                            <label for="heart">Heart Disease</label>
+                        </div>
+                    </div>
+                </section>
+
+                <button type="submit" class="submit-btn">See Results</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/formHandler.js') }}"></script>
+
+    <script src="js/api.js"></script>
+</body>
+
+</html>
